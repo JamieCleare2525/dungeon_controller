@@ -1,7 +1,73 @@
-.row
+.row.padding_20
   .col-sm-6
-    %h2 Campaigns
-    = link_to "New Campaign", "#", class: "btn btn-primary"
+    .row
+      .col-sm-8
+        %h2 Campaigns
+      .col-sm-4
+        = link_to "New Campaign", new_campaign_path, class: "btn btn-primary"
+    .row
+      .col-sm-12
 
+
+  .col-md-6
+    .row
+      .col-sm-8
+        %h2 Characters
+      .col-sm-4
+        = link_to "New Character", new_character_path, class: "btn btn-primary"
+    .row
+      .col-sm-12
+        %table.table{style: "width: 100%"}
+          %thead.thead-light
+            %tr
+              %th
+                Name
+              %th
+                Race
+              %th
+                Class
+          %tbody
+          - @characters.each do |character|
+            %tr
+              %td
+                = link_to character.name, edit_character_path(character)
+              %td
+                = character.race
+              %td
+                = character.character_class
+
+.row.padding_20
   .col-sm-6
-    %h2 Characters
+    .row
+      .col-sm-12
+        %h2 Friends
+        = form_tag(search_friendships_path, method: :get) do
+          .row
+            .col-sm-10
+              = text_field_tag "search_user", nil, class: "form-control", autofocus: true
+            .col-sm-2
+              = submit_tag "Search", class: "btn btn-primary"
+
+    .row.padding_20
+      .col-sm-12
+        %table.table{style: "width: 100%"}
+          %thead.thead-light
+            %tr
+              %th
+                Name
+              %th
+                Email
+              %th
+                No. Characters
+              %th
+          %tbody
+            - @friends.each do |friend|
+              %tr
+                %td
+                  = "#{friend.first_name} #{friend.last_name}"
+                %td
+                  = friend.email
+                %td
+                  = friend.characters.count
+                %td
+                  = link_to "Unfriend", friendship_path(id: friend.id), method: :delete, class: "btn btn-primary"

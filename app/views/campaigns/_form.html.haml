@@ -1,0 +1,15 @@
+= form_for(@campaign) do |f|
+
+  = render partial: "shared/errors", locals: {record: @campaign}
+
+  .row
+    .col-sm-12.form-group
+      = f.label :title, class: "col-sm-4 control-label"
+      .col-sm-12
+        = f.text_field :title, autofocus: true , class: "form-control"
+
+  .row
+    .col-sm-6.form-group
+      = f.label "Available Characters", class: "col-sm-4 control-label"
+      .col-sm-12
+        = f.select :characters, options_from_collection_for_select(@characters, "id", "name"), {}, multiple: true, class: "width_100"

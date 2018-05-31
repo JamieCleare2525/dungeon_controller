@@ -10,10 +10,30 @@
   width: 100%;
 }
 
-.alert-alert {
+.alert-alert, #error_explanation, .alert-error{
   @extend .alert-danger;
 }
 
 .alert-notice {
   @extend .alert-warning;
+}
+
+.center{
+  margin: auto;
+  text-align: center;
+}
+
+#error_explanation{
+  border: solid 2px red;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.padding_20{
+  padding-top: 20px;
+}
+
+.width_100{
+  width: 100%;
 }

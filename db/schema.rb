@@ -10,17 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_16_221401) do
+ActiveRecord::Schema.define(version: 2018_05_29_202736) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
+    t.integer "dungeon_master_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "character_classes", force: :cascade do |t|
+    t.integer "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "character_instances", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "character_id"
+    t.integer "campaign_id"
+    t.index ["campaign_id"], name: "index_character_instances_on_campaign_id"
+    t.index ["character_id"], name: "index_character_instances_on_character_id"
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.integer "hit_pointer"
+    t.string "race"
+    t.string "character_class"
+    t.integer "hit_points"
     t.integer "strength"
     t.integer "dexterity"
     t.integer "constitution"
@@ -28,8 +46,20 @@ ActiveRecord::Schema.define(version: 2018_05_16_221401) do
     t.integer "wisdom"
     t.integer "charisma"
     t.integer "speed"
+    t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.integer "name"
   end
 
   create_table "users", force: :cascade do |t|

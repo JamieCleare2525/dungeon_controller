@@ -1,0 +1,26 @@
+%h1 Friend Search
+
+%table.table
+  %thead.thead-light
+    %tr
+      %th
+        Name
+      %th
+        Email
+      %th
+        Number of Characters
+      %th
+  %tbody
+  - @users.each do |user|
+    %tr
+      %td
+        = "#{user.first_name} #{user.last_name}"
+      %td
+        = user.email
+      %td
+        = user.characters.count
+      %td
+        - if current_user.friends.where(id: user.id).any?
+          = link_to "Unfriend", friendship_path(id: user.id), method: :delete, class: "btn btn-primary"
+        - else
+          = link_to "Request", friendships_path(friend_id: user.id), method: :post, class: "btn btn-primary"
