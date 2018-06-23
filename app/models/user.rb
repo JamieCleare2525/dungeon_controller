@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   def accepted_friends
-    friends + inverse_friends
+    forward_friends = self.friendships.where(accepted: true).map(&:friend)
+    backward_friends = self.inverse_friendships.where(accepted: true).map(&:user)
+    (forward_friends + backward_friends).uniq
   end
 end

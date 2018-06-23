@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :friendships do
     collection do
       get :search
+      post :accept
+      delete :decline
     end
   end
 end
