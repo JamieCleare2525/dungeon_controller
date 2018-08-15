@@ -1,3 +1,7 @@
 %h1 Edit a Character
 
-= render partial: "form"
+= form_for(@character, url: character_path, method: :put) do |f|
+  - if @genre == "Transformers"
+    = render partial: "transformers_form", locals: {f: f}
+  - else
+    = render partial: "dnd_form", locals: {f: f}

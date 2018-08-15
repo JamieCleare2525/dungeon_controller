@@ -1,0 +1,22 @@
+= render partial: "shared/errors", locals: {record: @character}
+
+.row
+  .col-12.form-group
+    = f.label :name, class: "col-12 control-label"
+    .col-12
+      = f.text_field :name, autofocus: true , class: "form-control"
+
+  .col-6.form-group
+    = f.label :allegiance, class: "col-12 control-label"
+    .col-12
+      = f.select :allegiance, ["Autobots", "Decepticons"], {}, class: "form-control"
+
+  .col-6.form-group
+    = f.label :size, class: "col-12 control-label"
+    .col-12
+      = f.select :size, ["Small", "Medium", "Large"], {}, class: "form-control"
+
+  .col-6.form-group
+    = f.label :character_class, class: "col-12 control-label"
+    .col-12
+      = f.select :character_class, CharacterClass.transformers.keys, {}, class: "form-control", id: "transformers_class"

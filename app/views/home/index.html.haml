@@ -9,7 +9,50 @@
             = link_to "New Campaign", new_campaign_path, class: "btn btn-primary"
       .card-body
         .col-12
+          %ul.nav.nav-tabs
+            %li.nav-item
+              %a.nav-link.active{"data-toggle" => "tab", href: "#player"} As Player
+            %li.nav-item
+              %a.nav-link{"data-toggle" => "tab", href: "#dungeon_master"} As Dungeon Master
 
+          .tab-content
+            #player.tab-pane.active
+              %table.table{style: "width: 100%"}
+                %thead.thead-light
+                  %tr
+                    %th
+                      Title
+                    %th
+                      Character
+                    %th
+                %tbody
+                - @player_campaigns.each do |campaign|
+                  %tr
+                    %td
+                      = link_to campaign.title, edit_campaign_path(campaign.id)
+                    %td
+                      = campaign.characters.where(player_id: current_user.id).last.name
+                    %td
+                      = link_to "Play", "#", class: "btn btn-primary"
+
+            #dungeon_master.tab-pane
+              %table.table{style: "width: 100%"}
+                %thead.thead-light
+                  %tr
+                    %th
+                      Title
+                    %th
+                      No. Characters
+                    %th
+                %tbody
+                - @dm_campaigns.each do |campaign|
+                  %tr
+                    %td
+                      = link_to campaign.title, edit_campaign_path(campaign.id)
+                    %td
+                      = campaign.characters.count
+                    %td
+                      = link_to "Play", "#", class: "btn btn-primary"
 
   .col-6
     .card
@@ -18,7 +61,7 @@
           .col-8
             %h2 Characters
           .col-4
-            = link_to "New Character", new_character_path, class: "btn btn-primary"
+            = link_to "New Character", genre_characters_path, class: "btn btn-primary"
       .card-body
         .row
           .col-12
@@ -35,11 +78,11 @@
               - @characters.each do |character|
                 %tr
                   %td
-                    = link_to character.name, edit_character_path(character)
+                    = link_to character.specific.name, edit_character_path(character)
                   %td
-                    = character.race
+                    = character.specific.race
                   %td
-                    = character.character_class
+                    = character.specific.character_class
 
 .row.padding_20
   .col-12
