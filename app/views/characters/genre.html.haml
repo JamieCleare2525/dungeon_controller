@@ -1,0 +1,19 @@
+%h1 Genre Select
+
+.row
+  .col-12
+    %p Before creating a character please select the genre you wish to create a character for.
+
+.row
+  .col-6.mx-auto
+    .card
+      = form_tag(new_character_path, method: :get) do
+        .card-header
+          = label_tag "Campaign Genre"
+        .card-body.text-center
+          .row
+            .col-12.w-100
+              = select_tag "genre", options_for_select(CampaignGenre.types.keys), class: "w-100"
+          .row
+            .col-12.w-100
+              = submit_tag "Build Character", class: "mt-4"

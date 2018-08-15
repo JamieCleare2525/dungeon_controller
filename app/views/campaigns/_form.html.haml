@@ -3,13 +3,33 @@
   = render partial: "shared/errors", locals: {record: @campaign}
 
   .row
-    .col-sm-12.form-group
-      = f.label :title, class: "col-sm-4 control-label"
-      .col-sm-12
+    .col-12.form-group
+      = f.label :title, class: "col-12 control-label"
+      .col-12
         = f.text_field :title, autofocus: true , class: "form-control"
 
   .row
-    .col-sm-6.form-group
-      = f.label "Available Characters", class: "col-sm-4 control-label"
-      .col-sm-12
-        = f.select :characters, options_from_collection_for_select(@characters, "id", "name"), {}, multiple: true, class: "width_100"
+    .col-12.form-group
+      = f.label :description, class: "col-12 control-label"
+      .col-12
+        = f.text_area :description, autofocus: true, class: "form-control"
+
+  .row
+    .col-5.form-group
+      = f.label "Available Characters", class: "col-12 control-label"
+      .col-12
+        = f.select :available_characters, options_from_collection_for_select(@available_characters, "id", "name"), {}, multiple: true, class: "width_100"
+
+    .col-1
+      = link_to "<", "#", class: "btn btn-primary width_100", id: "unassign_character_btn"
+    .col-1
+      = link_to ">", "#", class: "btn btn-primary width_100", id: "assign_character_btn"
+
+    .col-5.form-group
+      = f.label "Assigned Characters", class: "col-12 control-label"
+      .col-12
+        = f.select :assigned_characters, options_from_collection_for_select(@assigned_characters, "id", "name"), {}, multiple: true, class: "width_100"
+
+  .row
+    .col-2.offset-5
+      = f.submit "Save Character", class: "btn btn-primary width_100", id: "campaign_submit"
