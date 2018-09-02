@@ -21,9 +21,11 @@
         = f.select :available_characters, options_from_collection_for_select(@available_characters, "id", "name"), {}, multiple: true, class: "width_100"
 
     .col-1
-      = link_to "<", "#", class: "btn btn-primary width_100", id: "unassign_character_btn"
+      .float-left
+        = link_to "<", "#", class: "btn btn-primary", id: "unassign_character_btn"
     .col-1
-      = link_to ">", "#", class: "btn btn-primary width_100", id: "assign_character_btn"
+      .float-right
+        = link_to ">", "#", class: "btn btn-primary", id: "assign_character_btn"
 
     .col-5.form-group
       = f.label "Assigned Characters", class: "col-12 control-label"
@@ -31,5 +33,5 @@
         = f.select :assigned_characters, options_from_collection_for_select(@assigned_characters, "id", "name"), {}, multiple: true, class: "width_100"
 
   .row
-    .col-2.offset-5
-      = f.submit "Save Character", class: "btn btn-primary width_100", id: "campaign_submit"
+    .col-12.text-center
+      = f.submit class: "btn btn-primary", id: "campaign_submit"

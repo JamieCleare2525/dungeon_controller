@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .devise_form{
   margin: auto;
@@ -36,4 +38,33 @@
 
 .width_100{
   width: 100%;
+}
+
+.player_hand{
+  background-color: #009933;
+  height: 100px;
+}
+
+.playing_card{
+  background-color: white;
+  height: 250px;
+  border: 1px solid black;
+}
+
+.h-flip{
+  transform: rotate(180deg);
+}
+
+.card_suit_sm{
+  width: 25px;
+  height: 25px;
+}
+
+.card_suit_lg{
+  width: 60px;
+  height: 60px;
+}
+
+.shuffle_cards{
+  min-width: 100px;
 }
