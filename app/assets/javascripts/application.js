@@ -12,11 +12,14 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
+//= require popper
 //= require activestorage
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
+$(document).ready(function() {
+  $( ".draggable" ).draggable({revert: "invalid"});
 });

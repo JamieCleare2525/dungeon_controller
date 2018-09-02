@@ -45,6 +45,9 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'active_record-acts_as'
+gem 'font-awesome-sass', '~> 5.2.0'
+gem 'inline_svg'
+gem 'popper_js', '~> 1.14.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,5 +1,5 @@
-.row.padding_20
-  .col-6
+.row
+  .col-12.col-lg-6.padding_20
     .card
       .card-header
         .row
@@ -33,7 +33,7 @@
                     %td
                       = campaign.characters.where(player_id: current_user.id).last.name
                     %td
-                      = link_to "Play", "#", class: "btn btn-primary"
+                      = link_to "Play", campaign_path(campaign), class: "btn btn-primary"
 
             #dungeon_master.tab-pane
               %table.table{style: "width: 100%"}
@@ -54,7 +54,7 @@
                     %td
                       = link_to "Play", "#", class: "btn btn-primary"
 
-  .col-6
+  .col-12.col-lg-6.padding_20
     .card
       .card-header
         .row
@@ -112,7 +112,6 @@
             - if @accepted_friends.any?
               .row
                 .col-12
-                  %h3 Friends
                   %table.table{style: "width: 100%"}
                     %thead.thead-light
                       %tr
@@ -138,7 +137,6 @@
             - if @pending_friendships.any?
               .row
                 .col-12
-                  %h3 Pending Friends
                   %table.table{style: "width: 100%"}
                     %thead.thead-light
                       %tr
@@ -166,7 +164,6 @@
             - if @requested_friendships.any?
               .row
                 .col-12
-                  %h3 Requested Friends
                   %table.table{style: "width: 100%"}
                     %thead.thead-light
                       %tr

@@ -17,4 +17,9 @@ Rails.application.routes.draw do
       delete :decline
     end
   end
+  resources :hands do
+    member do
+      get :shuffle
+    end
+  end
 end

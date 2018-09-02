@@ -7,6 +7,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string :suit
       t.string :rank
       t.integer :value
+      t.string :colour
       t.boolean :drawn, default: false
       t.timestamps
     end

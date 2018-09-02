@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :characters, foreign_key: :player_id
   has_many :campaigns, foreign_key: :dungeon_master_id
   has_one :deck
+  has_one :hand
 
   has_many :friendships
   has_many :friends, through: :friendships

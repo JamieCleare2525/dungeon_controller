@@ -42,6 +42,14 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def show
+    @campaign = Campaign.find(params[:id])
+    @hand = Hand.find_or_create_by!(campaign_id: @campaign.id, user_id: current_user.id, deck_id: current_user.deck.id)
+    @hand.deck.shuffle
+    @hand.refresh
+    @hand.reload
+  end
+
   private
 
   def campaign_params
