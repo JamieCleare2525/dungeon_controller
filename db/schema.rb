@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_08_28_163619) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "animal_totem_traits", force: :cascade do |t|
     t.integer "animal_totem_id"
     t.integer "trait_id"
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 2018_08_28_163619) do
   create_table "character_instances", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "character_id"
-    t.integer "campaign_id"
+    t.bigint "character_id"
+    t.bigint "campaign_id"
     t.index ["campaign_id"], name: "index_character_instances_on_campaign_id"
     t.index ["character_id"], name: "index_character_instances_on_character_id"
   end
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_08_28_163619) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "actable_type"
-    t.integer "actable_id"
+    t.bigint "actable_id"
     t.index ["actable_type", "actable_id"], name: "index_characters_on_actable_type_and_actable_id"
   end
 
