@@ -68,3 +68,17 @@
 .shuffle_cards{
   min-width: 100px;
 }
+
+.card_select_popup{
+  width: 60%;
+  background: red;
+  height: 400px;
+  margin: 10px;
+  z-index: 999;
+}
+
+.card-select{
+  border: 1px solid black;
+  height: 300px;
+  padding: 10px;
+}
